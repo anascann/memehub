@@ -37,16 +37,19 @@ export default function Studio(props) {
         template_id: id,
         username: "memehub1",
         password: "pranjalanas143",
-        ...requestData,
+        text0: "something",
+        text1: "else",
       };
       // let formData = new FormData(axiosData);
       console.log("+++++++++++++++++++++++data to be send", axiosData);
-      let response = await axios.post("https://api.imgflip.com/caption_image", {
-        axiosData,
+      let response = await fetch("https://api.imgflip.com/caption_image", {
+        ...axiosData,
       });
 
-      console.log("FOrm submitted");
-      setPreview(response.data.url);
+      // console.log("FOrm submitted", response);
+      let responseJson = await response.json();
+      console.log("+++++++++++++++++=", responseJson);
+      // setPreview(responseJson);
     } catch (error) {
       console.error(error);
     }

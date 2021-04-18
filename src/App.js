@@ -2,6 +2,7 @@ import "./App.css";
 import { Button } from "reactstrap";
 import Homepage from "./screens/Homepage/Homepage";
 import Studio from "./screens/Studio/Studio";
+import Navbar from "./screens/Navbar/Navbar";
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
   };
   return (
     <Router>
+      <Navbar />
       <div className="App">
         <h1 style={{ width: "60%", margin: "2px auto" }}>Trending memes</h1>
         {/* <Homepage memeData={data} /> */}

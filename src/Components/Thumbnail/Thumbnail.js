@@ -47,7 +47,9 @@ export default function Thumbnail(props) {
           alt="Card image cap"
         />
         <CardBody style={{ textAlign: "center" }}>
-          <CardTitle tag="h6">{props.title}</CardTitle>
+          <CardTitle tag="h6" style={{ color: "black" }}>
+            {props.title}
+          </CardTitle>
         </CardBody>
       </Card>
     </div>

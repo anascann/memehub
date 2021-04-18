@@ -45,7 +45,10 @@ export default function Homepage() {
               return (
                 <Col md={3} key={meme.id}>
                   {/*  */}
-                  <Link to={{ pathname: "/studio", state: { ...meme } }}>
+                  <Link
+                    to={{ pathname: "/studio", state: { ...meme } }}
+                    style={{ textDecoration: "none" }}
+                  >
                     <Thumbnail imgSrc={meme.url} title={meme.name} />
                   </Link>
                 </Col>
