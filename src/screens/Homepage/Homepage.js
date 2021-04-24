@@ -39,7 +39,7 @@ export default function Homepage() {
       //   margin: "0px auto",
       // }}
       >
-        <Row>
+        <Row style={{ backgroudColor: "ced4da" }}>
           {memes &&
             memes.map((meme) => {
               return (
