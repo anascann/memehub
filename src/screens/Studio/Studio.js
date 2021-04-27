@@ -110,7 +110,7 @@ export default function Studio(props) {
         </Row>
         <Row>
           <Col xs={6}>
-            Preview
+            <h3>Preview</h3>
             <Card>
               <img
                 width="100%"
