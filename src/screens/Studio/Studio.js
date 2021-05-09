@@ -9,10 +9,12 @@ import {
   Input,
   Label,
   Button,
+  Modal,
+  Spinner,
 } from "reactstrap";
 import axios from "axios";
 // import { Button } from "bootstrap";
-
+import "./style.css";
 import { MAKE_MEME_URL } from "../../config";
 // axios.defaults.headers.post["Content-Type"] = "application/json;charset=utf-8";
 // "http://localhost:3000";
@@ -23,12 +25,13 @@ export default function Studio(props) {
     memeData = {},
     id = "",
   } = props.location.state || {};
+  // states
   const [requestData, setRequestData] = useState({});
-  const [preview, setPreview] = useState("https://i.imgflip.com/1ur9b0.jpg");
+  const [preview, setPreview] = useState(null);
   const [temp, setTemp] = useState(Date.now());
-  console.log(props.memeData);
-  console.log("props are ++++++++++", props);
-  console.log(requestData);
+  const [isModal, setIsModal] = useState(false);
+
+  const toggleModal = () => setIsModal(!isModal);
   let textFields = [];
   for (let i = 0; i < box_count; i++) {
     textFields.push(i);
@@ -36,22 +39,12 @@ export default function Studio(props) {
   useEffect(() => console.log("use effect called", preview), [preview]);
   const handleSubmit = async (event) => {
     event.preventDefault();
+    toggleModal();
     try {
       let axiosData = {
         template_id: id,
         ...requestData,
       };
-      // let formData = new FormData(axiosData);
-      console.log("+++++++++++++++++++++++data to be send", axiosData);
-      // axios.defaults.headers.post["Access-Control-Allow-Origin"] = "*";
-      // let response = await axios({
-      //   method: "post",
-      //   url: MAKE_MEME_URL,
-      //   data: memeData,
-      //   headers: {
-      //     "Access-Control-Allow-Origin": "*",
-      //   },
-      // });
       let response = await axios.post(MAKE_MEME_URL, {
         headers: {
           "Access-Control-Allow-Origin": "*",
@@ -78,6 +71,17 @@ export default function Studio(props) {
   };
   return (
     <>
+      <Modal
+        isOpen={isModal}
+        toggle={toggleModal}
+        onExit={() => setPreview(null)}
+      >
+        {preview ? (
+          <img style={{ padding: "10px" }} src={preview}></img>
+        ) : (
+          <Spinner color="primary" />
+        )}
+      </Modal>
       <Container>
         <Row>
           <Col xs={6}>
@@ -106,19 +110,6 @@ export default function Studio(props) {
                 Make Meme
               </Button>
             </Form>
-          </Col>
-        </Row>
-        <Row>
-          <Col xs={6}>
-            <h3>Preview</h3>
-            <Card>
-              <img
-                width="100%"
-                src={preview}
-                key={preview}
-                alt="Card image cap"
-              />
-            </Card>
           </Col>
         </Row>
       </Container>
