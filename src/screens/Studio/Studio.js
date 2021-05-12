@@ -12,6 +12,8 @@ import {
   Modal,
   Spinner,
 } from "reactstrap";
+import { FaWhatsapp, FaInstagram } from "react-icons/fa";
+import { BiDownload } from "react-icons/bi";
 import axios from "axios";
 // import { Button } from "bootstrap";
 import "./style.css";
@@ -81,6 +83,23 @@ export default function Studio(props) {
         ) : (
           <Spinner color="primary" />
         )}
+        <div className="modal-div">
+          <BiDownload
+            size="2.5em"
+            className="modal-icon"
+            onClick={() => console.log("icon pressed")}
+          />
+          <FaInstagram
+            size="2.5em"
+            className="modal-icon"
+            onClick={() => console.log("icon pressed")}
+          />
+          <FaWhatsapp
+            size="2.5em"
+            className="modal-icon"
+            onClick={() => console.log("icon pressed")}
+          />
+        </div>
       </Modal>
       <Container>
         <Row>

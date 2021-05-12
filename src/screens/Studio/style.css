@@ -4,3 +4,14 @@
   min-width: 100px;
   height: fit-content;
 }
+
+.modal-div {
+  display: inline-flex;
+  justify-content: space-evenly;
+}
+
+.modal-icon {
+  padding: 2px;
+  margin: 2px;
+  cursor: pointer;
+}
